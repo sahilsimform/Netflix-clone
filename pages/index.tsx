@@ -37,7 +37,7 @@ const Home = ({
       <main className="relative pl-4 pb-24 lg:space-x-24 lg:pl-16">
         <Banner netflixOriginals={netflixOriginals} />
         <section>
-          <Row title="Trending Now" movies={trendingNow} />
+          {/* <Row title="Trending Now" movies={trendingNow} />
           <Row title="Top Rated" movies={topRated} />
           <Row title="Action Thri" movies={actionMovies} />
           {list.length > 0 && <Row title="My List" movies={list} />}
@@ -45,7 +45,7 @@ const Home = ({
           <Row title="Comedies" movies={comedyMovies} />
           <Row title="Scary Mo" movies={horrorMovies} />
           <Row title="" movies={} />
-          <Row title="" movies={} />
+          <Row title="" movies={} /> */}
         </section>
       </main>
     </div>
