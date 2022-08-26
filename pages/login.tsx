@@ -34,6 +34,10 @@ function Login() {
       <Head>
         <title>Netflix</title>
         <link rel="icon" href="/favicon.ico" />
+        <meta
+          name="google-site-verification"
+          content="8Idj36dwGiMTxXe_yDotxpCf4CKB-TAJ0l07qWUBA1s"
+        />
       </Head>
       <Image
         src="https://rb.gy/p2hphi"
