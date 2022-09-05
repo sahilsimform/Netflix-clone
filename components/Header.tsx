@@ -58,13 +58,13 @@ function Header() {
         <p className="hidden lg:inline">Kids</p>
         <BellIcon className="h-6 w-6" />
         <Link href="/account">
-          <div onClick={logout}>
+          <div>
             <img
               src="https://rb.gy/g1pwyx"
               alt="user Image"
               className="cursor-pointer rounded"
             />
-            <h3>Logout</h3>
+            <h3>user</h3>
           </div>
         </Link>
       </div>
