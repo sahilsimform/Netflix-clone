@@ -33,7 +33,7 @@ function Login() {
     <div className="relative flex h-screen w-screen flex-col bg-black md:items-center md:justify-center md:bg-transparent">
       <Head>
         <title>Netflix</title>
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="netflix_logo_icon_170919.ico" />
         <meta
           name="google-site-verification"
           content="8Idj36dwGiMTxXe_yDotxpCf4CKB-TAJ0l07qWUBA1s"
@@ -95,7 +95,6 @@ function Login() {
           onClick={() => setLogin(true)}
           type="submit"
         >
-          {/* <div>Sign In</div> */}
           <div>{changeText}</div>
         </button>
         <div className="text-[gray]">
