@@ -3,30 +3,13 @@ import React from "react";
 import { CheckIcon } from "@heroicons/react/outline";
 import Table from "../components/Table";
 import Card from "../components/Card";
-import { checkout } from "../lib/checkout";
+import { checkout } from "./api/checkout";
 import useAuth from "../hooks/useAuth";
 import Link from "next/link";
 import Image from "next/image";
+import initStripe from "stripe";
 
-const plans = [
-  {
-    id: "1",
-    name: "Basic",
-    price: `${process.env.NEXT_PUBLIC_API_KEY_PRODUCT_ONE}`,
-  },
-  {
-    id: "2",
-    name: "Standard",
-    price: `${process.env.NEXT_PUBLIC_API_KEY_PRODUCT_TWO}`,
-  },
-  {
-    id: "3",
-    name: "Premium",
-    price: `${process.env.NEXT_PUBLIC_API_KEY_PRODUCT_THREE}`,
-  },
-];
-
-const Subscriptions = () => {
+const Subscriptions = ({ plans }) => {
   const { logout } = useAuth();
   return (
     <div>
@@ -73,13 +56,13 @@ const Subscriptions = () => {
           <div className="flex w-full justify-center items-center self-end md:w-3/5">
             {plans.map((plan) => (
               <button
-                className={`planBox `}
                 key={plan.id}
+                className={`planBox `}
                 onClick={() => {
                   checkout({
                     lineItems: [
                       {
-                        price: plan.price,
+                        price: plan.id,
                         quantity: 1,
                       },
                     ],
@@ -90,7 +73,7 @@ const Subscriptions = () => {
               </button>
             ))}
           </div>
-          <Table />
+          <Table {...plans} />
           <div className="flex justify-center">
             <Card />
           </div>
@@ -100,4 +83,28 @@ const Subscriptions = () => {
   );
 };
 
+export const getStaticProps = async () => {
+  const stripe = initStripe(process.env.NEXT_PUBLIC_API_KEY_STRIPE_SECRET_KEY);
+  const { data: prices } = await stripe.prices.list();
+
+  const plans = await Promise.all(
+    prices.map(async (price) => {
+      const product = await stripe.products.retrieve(price.product);
+      return {
+        id: price.id,
+        name: product.name,
+        price: price.unit_amount / 100,
+        portability: product.metadata.portability,
+        resolution: product.metadata.resolution,
+        // videoQuality: product.metadata.videoQuality,
+      };
+    })
+  );
+
+  return {
+    props: {
+      plans,
+    },
+  };
+};
 export default Subscriptions;

@@ -7,15 +7,15 @@ const Table = () => {
       <tbody className="divide-y divide-[gray] ">
         <tr className="tableRow">
           <td className="tableDataTitle">Monthly Price</td>
-          <td className="tableDataFeature">₹ 350</td>
-          <td className="tableDataFeature">₹ 500</td>
           <td className="tableDataFeature">₹ 1000</td>
+          <td className="tableDataFeature">₹ 500</td>
+          <td className="tableDataFeature">₹ 350</td>
         </tr>
         <tr className="tableRow">
           <td className="tableDataTitle">Video Quality</td>
-          <td className="tableDataFeature">480p</td>
-          <td className="tableDataFeature">1080p</td>
           <td className="tableDataFeature">4K+HDR</td>
+          <td className="tableDataFeature">1080p</td>
+          <td className="tableDataFeature">480p</td>
         </tr>
         <tr className="tableRow">
           <td className="tableDataTitle">Portability</td>
