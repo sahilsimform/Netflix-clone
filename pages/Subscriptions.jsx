@@ -94,9 +94,6 @@ export const getStaticProps = async () => {
       return {
         id: price.id,
         name: product.name,
-        // price: price.unit_amount / 100,
-        // portability: product.metadata.portability,
-        // resolution: product.metadata.resolution,
       };
     })
   );
