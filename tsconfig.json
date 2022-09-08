@@ -15,6 +15,6 @@
     "jsx": "preserve",
     "incremental": true
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "pages/api/checkout.js", "pages/Subscriptions.jsx", "components/Table.tsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "pages/api/checkout.js", "pages/Subscriptions.jsx", "components/Table.tsx", "pages/account.jsx"],
   "exclude": ["node_modules"]
 }
