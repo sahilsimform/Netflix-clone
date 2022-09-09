@@ -3,7 +3,8 @@ import { BellIcon, SearchIcon } from "@heroicons/react/solid";
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import useAuth from "../hooks/useAuth";
-// import BasicMenu from "./BasicMenu";
+import BasicMenu from "./BasicMenu";
+import { FiLogOut } from "react-icons/fi";
 
 function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -38,7 +39,7 @@ function Header() {
           />
         </Link>
 
-        {/* <BasicMenu /> */}
+        <BasicMenu />
 
         <ul className="hidden space-x-4 md:flex">
           <li className="headerLink cursor-default font-semibold text-white hover:text-white">
@@ -67,6 +68,9 @@ function Header() {
             <h3>user</h3>
           </div>
         </Link>
+        <button onClick={logout}>
+          <FiLogOut className="h-6 w-6 text-red-600" />
+        </button>
       </div>
     </header>
   );

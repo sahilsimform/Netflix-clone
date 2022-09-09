@@ -1,22 +1,13 @@
-import { useState } from "react";
 import useAuth from "../hooks/useAuth";
-// import useSubscription from "../hooks/useSubscription";
-// import { goToBillingPortal } from "../lib/stripe";
-// import Loader from "./Loader";
 
-function Membership() {
+const Membership = ({
+  userPdf,
+  userHostedInvoiceUrl,
+  memberShipStartDate,
+  // memberShipEndDate,
+}) => {
   const { user } = useAuth();
-  //   const subscription = useSubscription(user);
-  //   const [isBillingLoading, setBillingLoading] = useState(false);
-
-  //   const manageSubscription = () => {
-  //     if (subscription) {
-  //       setBillingLoading(true);
-  //       goToBillingPortal();
-  //     }
-  //   };
-
-  //   console.log(subscription);
+  // console.log(userHostedInvoiceUrl);
 
   return (
     <div className="mt-6 grid grid-cols-1 gap-x-4 border px-4 md:grid-cols-4 md:border-x-0 md:border-t md:border-b-0 md:px-0">
@@ -52,23 +43,30 @@ function Membership() {
 
         <div className="flex flex-col justify-between pt-4 pb-4 md:flex-row md:pb-0">
           <div>
-            <p>
-              {/* {subscription?.cancel_at_period_end
-                ? "Your membership will end on "
-                : "Your next billing date is "}
-              {subscription?.current_period_end} */}
-            </p>
+            <p>Your membership will started on</p>
+            {memberShipStartDate}
+            {/* <p>Your membership will end on</p>
+            {memberShipEndDate} */}
           </div>
           <div className="md:text-right">
             <p className="membershipLink">Manage payment info</p>
             <p className="membershipLink">Add backup payment method</p>
-            <p className="membershipLink">Billing Details</p>
+            <p className="membershipLink">
+              <a href={userPdf} target="_blank">
+                Billing PDF
+              </a>
+            </p>
+            <p className="membershipLink">
+              <a href={userHostedInvoiceUrl} target="_blank">
+                Online Invoice
+              </a>
+            </p>
             <p className="membershipLink">Change billing day</p>
           </div>
         </div>
       </div>
     </div>
   );
-}
+};
 
 export default Membership;
